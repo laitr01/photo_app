@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_albums"
+        android:icon="@drawable/ic_nav_albums"
+        android:title="@string/title_albums" />
+
+    <item
+        android:id="@+id/navigation_trend"
+        android:icon="@drawable/ic_nav_trend"
+        android:title="@string/title_trend" />
+
+    <item
+        android:id="@+id/navigation_my_list"
+        android:icon="@drawable/ic_nav_user"
+        android:title="@string/title_my_list" />
+
+    <item
+        android:id="@+id/navigation_activities"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/title_activity" />
+
+</menu>

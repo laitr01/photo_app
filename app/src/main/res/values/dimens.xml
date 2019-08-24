@@ -1,0 +1,33 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">173dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="titlebar_height">56dp</dimen>
+
+    <!--渐变时还没到布局全部就已经不透明了，距离 45dp-->
+    <dimen name="base_header_activity_slide_more">45dp</dimen>
+
+    <dimen name="home_header_size">291dp</dimen>
+
+    <dimen name="nav_bar_height">56dp</dimen>
+    <dimen name="nav_bar_height_more">58dp</dimen>
+
+    <!--用来测电影详情页-->
+    <dimen name="new_home_header_size">325dp</dimen>
+
+
+    <dimen name="slide_shape_title_ng">310dp</dimen>
+    <dimen name="menu_left_margin">32dp</dimen>
+    <dimen name="id_album_viewed_width">24dp</dimen>
+    <dimen name="id_album_viewed_height">24dp</dimen>
+    <dimen name="album_praise_btn_width">24dp</dimen>
+    <dimen name="album_praise_btn_height">24dp</dimen>
+    <dimen name="album_shared_btn_width">24dp</dimen>
+    <dimen name="album_shared_btn_height">24dp</dimen>
+    <dimen name="login_diaglog_margin_right">30dp</dimen>
+    <dimen name="login_diaglog_margin_top">50dp</dimen>
+    <dimen name="menu_bottom_margin">5dp</dimen>
+</resources>

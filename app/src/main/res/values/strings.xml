@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Beauty Photos</string>
+    <!--Bottom navigation-->
+    <string name="title_albums">Albums</string>
+    <string name="title_trend">Hot Trend</string>
+    <string name="title_activity">Activities</string>
+    <string name="title_my_list">My List</string>
+
+    <string name="empty_notify">No item is available...</string>
+    <string name="error_notify">Oops! Something wrong happened...</string>
+    <string name="network_lost_notify">Oops! No connection...</string>
+    <string name="error_action">Click to try again!</string>
+    <string name="loading">Loading...</string>
+    <string name="listview_header_hint_normal">Pull down to refresh...</string>
+    <string name="refreshing">Refreshing...</string>
+    <string name="refresh_done">Refresh completed...</string>
+    <string name="listview_header_hint_release">Release refresh</string>
+    <string name="picture_has_save_to">Saved to %s</string>
+
+
+    <dimen name="item_dialog_margin">5dp</dimen>
+    <dimen name="item_dialog_padding">5dp</dimen>
+    <integer name="span_size">2</integer>
+</resources>

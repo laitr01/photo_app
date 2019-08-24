@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorTabText">#585858</color>
+
+    <color name="colorTheme">#ffce3d3a</color>
+    <!--页面背景的颜色-->
+    <color name="color_page_bg">#F1F3F4</color>
+
+    <color name="colorWhite">#ffffffff</color>
+    <color name="colorTabBg">#ffffffff</color>
+    <color name="colorTabTextCheck">#ffce3d3a</color>
+    <color name="colorTabTextNormal">#585858</color>
+    <color name="colorTabLine">#ffce3d3a</color>
+    <!--Item 5.0 version selector color-->
+    <color name="itemLowBackground">#d9d9d9</color>
+    <!--水波纹或5.0以下选择器颜色-->
+    <color name="tabBackground">#777D7D7D</color>
+    <!--透明色-->
+    <color name="colorTransparent">#00000000</color>
+    <!--正文文字颜色-->
+    <color name="colorContent">#ff333333</color>
+    <!--侧边栏分割线-->
+    <color name="colorNavLine">#E0E0E0</color>
+    <!--item的水波纹颜色-->
+    <color name="itemBackground">#DD7D7D7D</color>
+
+    <color name="transparent">#10000000</color>
+    <color name="pressed_color">#33000000</color>
+    <drawable name="pressed_color">#33000000</drawable>
+    <color name="colorSubtitle">#999</color>
+    <color name="text_common">#191919</color>
+    <!--item的分割线-->
+    <color name="colorLineItem">#FFDDDDDD</color>
+</resources>
