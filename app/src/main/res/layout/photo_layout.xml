@@ -19,7 +19,6 @@
             android:id="@+id/thumbnail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_gravity="center"
             android:src="@drawable/img_default_meizi" />

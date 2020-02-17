@@ -9,6 +9,27 @@ class DensityUtil {
 
     companion object {
 
+        fun sockMerchant(n: Int, ar: Array<Int>): Int {
+
+            val mapStocks = HashMap<Int, Int>()
+
+            ar.forEach{
+                if(mapStocks.contains(it)){
+                    mapStocks[it] = mapStocks[it] as Int + 1
+                }else{
+                    mapStocks[it] = 1
+                }
+            }
+
+            var pairCount = 0
+
+//            mapStocks.forEach { key, value ->
+//                pairCount += value / 2
+//            }
+
+            return pairCount
+        }
+
         fun setViewMargin(view: View, isDp: Boolean, left: Int, right: Int, top: Int, bottom: Int): ViewGroup.LayoutParams? {
             var leftPx = left
             var rightPx = right

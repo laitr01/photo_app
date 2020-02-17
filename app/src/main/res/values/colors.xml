@@ -34,4 +34,5 @@
     <color name="text_common">#191919</color>
     <!--item的分割线-->
     <color name="colorLineItem">#FFDDDDDD</color>
+    <color name="mid_grey">#40808080</color>
 </resources>

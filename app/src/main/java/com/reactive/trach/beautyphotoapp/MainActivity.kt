@@ -1,12 +1,14 @@
 package com.reactive.trach.beautyphotoapp
 
 import android.Manifest
+import android.app.Activity
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import com.reactive.trach.beautyphotoapp.main.MainParam
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.subjects.PublishSubject
@@ -14,6 +16,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import io.reactivex.disposables.CompositeDisposable
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
+import com.reactive.trach.beautyphotoapp.albums.AlbumDetailAdapter
+import com.reactive.trach.beautyphotoapp.albums.AlbumDetailFragment
 import com.reactive.trach.beautyphotoapp.albums.AlbumDetailParams
 import com.reactive.trach.beautyphotoapp.data.model.AlbumResponse
 
@@ -43,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                     val fm = FragmentFactory.create(it)
                     supportFragmentManager
                             .beginTransaction()
-                            .add(R.id.container, fm, fm!!::class.java.name)
+                            .add(R.id.container, fm!!, fm::class.java.name)
                             .addToBackStack(null)
                             .commitAllowingStateLoss()
                 })
@@ -80,6 +84,7 @@ class MainActivity : AppCompatActivity() {
             sceneParam.onNext(MainParam(0))
         }
     }
+
 
     fun hideHome(title: String) {
         supportActionBar?.setDisplayHomeAsUpEnabled(false)

@@ -31,6 +31,9 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".photoview.PhotoViewActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Transparent"/>
 
     </application>
 

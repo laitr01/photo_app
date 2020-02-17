@@ -12,6 +12,21 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+        // Write your code here
+        val s = arrayListOf("trach", "vinh", "trach", "vinh", "trach")
+
+        val map = HashMap<String, Int>()
+        val result = ArrayList<String>()
+        s.forEach {
+            if(map.containsKey(it)){
+                result.add("$it${map[it]!!}")
+                map[it] = map[it]!! + 1
+            }else{
+                result.add(it)
+                map[it] = 1
+            }
+        }
+
+        assertEquals(result, arrayOf(""))
     }
 }

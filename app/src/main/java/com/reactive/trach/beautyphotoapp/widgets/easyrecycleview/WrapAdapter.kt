@@ -1,8 +1,8 @@
 package com.reactive.trach.beautyphotoapp.widgets.easyrecycleview
 
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.StaggeredGridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import android.util.SparseArray
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +10,8 @@ import android.view.ViewGroup
 class WrapAdapter(
         val headerViews: SparseArray<View>,
         val footViews: SparseArray<View>,
-        val adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+        val adapter: androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>
+) : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
 
     private val TYPE_REFRESH_HEADER = -5
     private val TYPE_HEADER = -4
@@ -20,12 +20,12 @@ class WrapAdapter(
 
     private var headerPosition = 1
 
-    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+    override fun onAttachedToRecyclerView(recyclerView: androidx.recyclerview.widget.RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         val manager = recyclerView.layoutManager
-        if (manager is GridLayoutManager) {
+        if (manager is androidx.recyclerview.widget.GridLayoutManager) {
             val gridManager = manager
-            gridManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            gridManager.spanSizeLookup = object : androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int {
                     return if (isHeader(position) || isFooter(position))
                         gridManager.spanCount
@@ -36,11 +36,11 @@ class WrapAdapter(
         }
     }
 
-    override fun onViewAttachedToWindow(holder: RecyclerView.ViewHolder) {
+    override fun onViewAttachedToWindow(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder) {
         super.onViewAttachedToWindow(holder)
         val lp = holder.itemView.layoutParams
         if (lp != null
-                && lp is StaggeredGridLayoutManager.LayoutParams
+                && lp is androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams
                 && (isHeader(holder.layoutPosition) || isFooter(holder.layoutPosition))) {
             lp.isFullSpan = true
         }
@@ -66,7 +66,7 @@ class WrapAdapter(
         return footViews.size()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         if (viewType == TYPE_REFRESH_HEADER) {
             return SimpleViewHolder(headerViews.get(0))
         } else if (viewType == TYPE_HEADER) {
@@ -77,7 +77,7 @@ class WrapAdapter(
         return adapter.onCreateViewHolder(parent, viewType)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         if (isHeader(position)) {
             return
         }
@@ -129,14 +129,14 @@ class WrapAdapter(
         return -1
     }
 
-    override fun unregisterAdapterDataObserver(observer: RecyclerView.AdapterDataObserver) {
+    override fun unregisterAdapterDataObserver(observer: androidx.recyclerview.widget.RecyclerView.AdapterDataObserver) {
         adapter.unregisterAdapterDataObserver(observer)
     }
 
-    override fun registerAdapterDataObserver(observer: RecyclerView.AdapterDataObserver) {
+    override fun registerAdapterDataObserver(observer: androidx.recyclerview.widget.RecyclerView.AdapterDataObserver) {
         adapter.registerAdapterDataObserver(observer)
     }
 
-    private inner class SimpleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    private inner class SimpleViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView)
 
 }

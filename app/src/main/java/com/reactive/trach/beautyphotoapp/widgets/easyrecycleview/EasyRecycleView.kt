@@ -2,16 +2,16 @@ package com.reactive.trach.beautyphotoapp.widgets.easyrecycleview
 
 import android.content.Context
 import android.net.ConnectivityManager
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.StaggeredGridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import android.util.AttributeSet
 import android.util.SparseArray
 import android.view.MotionEvent
 import android.view.View
 
-class EasyRecycleView : RecyclerView {
+class EasyRecycleView : androidx.recyclerview.widget.RecyclerView {
     private lateinit var mLoadingListener: LoadingListener
     private lateinit var mWrapAdapter: WrapAdapter
     private val mHeaderViews = SparseArray<View>()
@@ -60,7 +60,7 @@ class EasyRecycleView : RecyclerView {
     private fun loadMoreComplete() {
         isLoadingData = false
         val footView = mFootViews.get(0)
-        if (previousTotal <= layoutManager.itemCount) {
+        if (previousTotal <= layoutManager!!.itemCount) {
             if (footView is LoadingMoreFooter) {
                 footView.setState(LoadingMoreFooter.STATE_COMPLETE)
             } else {
@@ -74,7 +74,7 @@ class EasyRecycleView : RecyclerView {
             }
             isnomore = true
         }
-        previousTotal = layoutManager.itemCount
+        previousTotal = layoutManager!!.itemCount
     }
 
     fun noMoreLoading() {
@@ -101,26 +101,26 @@ class EasyRecycleView : RecyclerView {
         }
     }
 
-    override fun setAdapter(adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>) {
-        mWrapAdapter = WrapAdapter(mHeaderViews, mFootViews, adapter)
+    override fun setAdapter(adapter: Adapter<*>?) {
+        mWrapAdapter = WrapAdapter(mHeaderViews, mFootViews, (adapter as Adapter<ViewHolder>?)!!)
         super.setAdapter(mWrapAdapter)
-        adapter.registerAdapterDataObserver(mDataObserver)
+        adapter!!.registerAdapterDataObserver(mDataObserver)
     }
 
     override fun onScrollStateChanged(state: Int) {
         super.onScrollStateChanged(state)
 
-        if (state == RecyclerView.SCROLL_STATE_IDLE && mLoadingListener != null && !isLoadingData && loadingMoreEnabled) {
+        if (state == androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE && mLoadingListener != null && !isLoadingData && loadingMoreEnabled) {
             val layoutManager = layoutManager
             val lastVisibleItemPosition: Int
-            if (layoutManager is GridLayoutManager) {
+            if (layoutManager is androidx.recyclerview.widget.GridLayoutManager) {
                 lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
-            } else if (layoutManager is StaggeredGridLayoutManager) {
+            } else if (layoutManager is androidx.recyclerview.widget.StaggeredGridLayoutManager) {
                 val into = IntArray(layoutManager.spanCount)
                 layoutManager.findLastVisibleItemPositions(into)
                 lastVisibleItemPosition = findMax(into)
             } else {
-                lastVisibleItemPosition = (layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
+                lastVisibleItemPosition = (layoutManager as androidx.recyclerview.widget.LinearLayoutManager).findLastVisibleItemPosition()
             }
             if (layoutManager.childCount > 0
                     && lastVisibleItemPosition >= layoutManager.itemCount - 1
@@ -207,7 +207,7 @@ class EasyRecycleView : RecyclerView {
         return view.parent != null
     }
 
-    private val mDataObserver = object : RecyclerView.AdapterDataObserver() {
+    private val mDataObserver = object : androidx.recyclerview.widget.RecyclerView.AdapterDataObserver() {
         override fun onChanged() {
             mWrapAdapter.notifyDataSetChanged()
         }

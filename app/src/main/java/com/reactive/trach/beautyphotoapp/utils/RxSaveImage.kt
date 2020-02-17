@@ -35,8 +35,8 @@ object RxSaveImage {
             var bitmap: Bitmap? = null
             try {
                 bitmap = Glide.with(context)
-                        .load(RxSaveImage.parseImageUrl(url))
                         .asBitmap()
+                        .load(parseImageUrl(url))
                         .into(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
                         .get()
 

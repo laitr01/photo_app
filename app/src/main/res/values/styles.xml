@@ -1,11 +1,31 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="MyThemeRed">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!-- Customize your theme here. -->
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
+    <declare-styleable name="ElasticDragDismissFrameLayout">
+        <attr name="dragDismissDistance" format="dimension" />
+        <attr name="dragDismissFraction" format="float" />
+        <attr name="dragDismissScale" format="float" />
+        <attr name="dragElasticity" format="float" />
+    </declare-styleable>
+
+    <style name="Transparent" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- using a semi-transparent window background for the drag-back gesture -->
+        <item name="android:windowBackground">@color/scrim</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <!-- 网易红为主色调 -->
@@ -15,20 +35,11 @@
         <item name="colorPrimary">@color/colorTheme</item>
         <item name="colorPrimaryDark">@color/colorTheme</item>
         <item name="colorAccent">@color/colorTheme</item>
-        <item name="android:windowAnimationStyle">@style/default_animation</item>
 
         <!--默认状态下页面的背景色-->
         <!--<item name="android:windowBackground">@color/color_page_bg</item>-->
         <!--正常状态下字体颜色和icon颜色-->
         <!--<item name="android:textColorPrimary">@color/colorTheme</item>-->
-    </style>
-
-    <!-- 默认Activity跳转动画 -->
-    <style name="default_animation" mce_bogus="1" parent="@android:style/Animation.Activity">
-        <item name="android:activityOpenEnterAnimation">@anim/activity_up_in</item>
-        <item name="android:activityOpenExitAnimation">@anim/activity_up_out</item>
-        <item name="android:activityCloseEnterAnimation">@anim/activity_down_in</item>
-        <item name="android:activityCloseExitAnimation">@anim/activity_down_out</item>
     </style>
 
     <!--titleBar样式-->
@@ -59,12 +70,6 @@
         <item name="colorPrimary">@color/colorTheme</item>
         <item name="colorPrimaryDark">@color/colorTheme</item>
         <item name="colorAccent">@color/colorTheme</item>
-        <item name="android:windowAnimationStyle">@style/default_animation_down</item>
-    </style>
-    <!--只有上一页面退出时有动画-->
-    <style name="default_animation_down" mce_bogus="1" parent="@android:style/Animation.Activity">
-        <item name="android:activityCloseEnterAnimation">@anim/activity_down_in</item>
-        <item name="android:activityCloseExitAnimation">@anim/activity_down_out</item>
     </style>
 
     <style name="WebTitle" parent="@android:style/TextAppearance">
@@ -95,4 +100,6 @@
         <item name="android:layout_height">1px</item>
         <item name="android:layout_width">match_parent</item>
     </style>
+
+    <color name="scrim">#99323232</color>
 </resources>

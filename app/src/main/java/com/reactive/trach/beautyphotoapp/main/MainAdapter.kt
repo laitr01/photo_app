@@ -1,6 +1,6 @@
 package com.reactive.trach.beautyphotoapp.main
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +14,11 @@ import com.reactive.trach.beautyphotoapp.utils.DensityUtil
 import com.reactive.trach.beautyphotoapp.utils.RxSaveImage
 
 
-class MainAdapter(val listener: (Album) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MainAdapter(val listener: (Album) -> Unit) : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
 
     private val albums: ArrayList<Album> = ArrayList()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
 
         return AlbumHolder.create(parent)
     }
@@ -33,7 +33,7 @@ class MainAdapter(val listener: (Album) -> Unit) : RecyclerView.Adapter<Recycler
         return albums.size
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         holder as AlbumHolder
         holder.bind(albums[position])
 
@@ -47,14 +47,13 @@ class MainAdapter(val listener: (Album) -> Unit) : RecyclerView.Adapter<Recycler
         notifyDataSetChanged()
     }
 
-    class AlbumHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    class AlbumHolder(val view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
 
         private val imageView = view.findViewById(R.id.thumbnail) as ImageView
 
         fun bind(album: Album) {
             Glide.with(view.context)
                     .load(RxSaveImage.parseImageUrl(album.coverImg))
-                    .crossFade(200)
                     .placeholder(R.drawable.img_default_meizi)
                     .error(R.drawable.img_default_meizi)
                     .into(imageView)

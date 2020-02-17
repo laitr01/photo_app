@@ -21,4 +21,8 @@
     <dimen name="item_dialog_margin">5dp</dimen>
     <dimen name="item_dialog_padding">5dp</dimen>
     <integer name="span_size">2</integer>
+    <string name="simple_activity_transition">simple_activity_transition</string>
+    <string name="transition_shot_background">shot_background</string>
+    <string name="transition_shot" translatable="false">shot</string>
+
 </resources>

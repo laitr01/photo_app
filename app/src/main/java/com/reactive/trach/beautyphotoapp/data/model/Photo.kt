@@ -45,6 +45,9 @@ data class Photo(
             parcel.readString(),
             parcel.readString())
 
+    @Transient
+    var viewId: Int = -1
+
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeLong(photoId)
         parcel.writeString(albumId)

@@ -1,6 +1,8 @@
 package com.reactive.trach.beautyphotoapp.albums
 
-import android.support.v7.widget.RecyclerView
+import android.app.SharedElementCallback
+import android.content.Context
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,11 +14,14 @@ import com.reactive.trach.beautyphotoapp.utils.DensityUtil
 import com.reactive.trach.beautyphotoapp.utils.RxSaveImage
 
 class AlbumDetailAdapter(
-        val listener: (Int, List<String>, List<Photo>, List<String>) -> Unit
-) :
-        RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+        val listener: (Int, Photo, View) -> Unit
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val photos: ArrayList<Photo> = ArrayList()
+    val photos: ArrayList<Photo> = ArrayList()
+
+    init {
+        setHasStableIds(true)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
@@ -35,7 +40,7 @@ class AlbumDetailAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder as PhotoHolder
-        holder.bind(position, photos.map { it.imageName }, photos, photos.map { it.imageName }, listener)
+        holder.bind(position, photos[position], photos, listener)
     }
 
     fun updateItem(photo: Photo) {
@@ -50,21 +55,19 @@ class AlbumDetailAdapter(
 
         private val imageView = view.findViewById<ImageView>(R.id.thumbnail)
 
-        fun bind(position: Int, photos: List<String>,
-                 photo: List<Photo>,
-                 titles: List<String>,
-                 listener: (Int, List<String>, List<Photo>, List<String>) -> Unit) {
+        fun bind(position: Int, photo: Photo,
+                 photos: List<Photo>,
+                 listener: (Int, Photo, View) -> Unit) {
 
             Glide.with(view.context)
-                    .load(RxSaveImage.parseImageUrl(photos[position]))
-                    .crossFade(500)
+                    .load(RxSaveImage.parseImageUrl(photos[position].imageName))
                     .placeholder(R.drawable.img_default_meizi)
                     .error(R.drawable.img_default_meizi)
                     .into(imageView)
             DensityUtil.setViewMargin(itemView, false, 0, 0, 0, 0)
 
             view.setOnClickListener {
-                listener(adapterPosition, photos, photo, titles)
+                listener(adapterPosition, photo, imageView)
             }
         }
 

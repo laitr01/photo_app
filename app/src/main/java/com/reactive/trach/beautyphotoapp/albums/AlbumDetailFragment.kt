@@ -1,27 +1,37 @@
 package com.reactive.trach.beautyphotoapp.albums
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import android.app.ActivityOptions
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.StaggeredGridLayoutManager
+import android.util.Pair
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.reactive.trach.beautyphotoapp.MainActivity
+import com.reactive.trach.beautyphotoapp.PinchZoomItemTouchListener
 import com.reactive.trach.beautyphotoapp.R
 import com.reactive.trach.beautyphotoapp.data.Response
 import com.reactive.trach.beautyphotoapp.data.Status
 import com.reactive.trach.beautyphotoapp.data.model.Photo
 import com.reactive.trach.beautyphotoapp.data.network.APIConfig
+import com.reactive.trach.beautyphotoapp.photoview.PhotoViewActivity
 import kotlinx.android.synthetic.main.error_view.*
 import kotlinx.android.synthetic.main.loading_view.*
 import kotlinx.android.synthetic.main.photo_list_layout.*
 
-class AlbumDetailFragment : Fragment() {
+class AlbumDetailFragment : Fragment(), PinchZoomItemTouchListener.PinchZoomListener {
+
+    override fun onPinchZoom(position: Int) {
+        Toast.makeText(context, "Pinched $position", Toast.LENGTH_SHORT).show();
+    }
 
     private lateinit var viewModel: AlbumDetailViewModel
     private lateinit var adapter: AlbumDetailAdapter
@@ -44,12 +54,23 @@ class AlbumDetailFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
 
         super.onActivityCreated(savedInstanceState)
-
         setLayoutManager()
     }
 
+
     private fun setLayoutManager() {
-        adapter = AlbumDetailAdapter { pos, photos, photoList, titles -> /* i will handle this in next article */ }
+        adapter = AlbumDetailAdapter { pos, photo, imageView -> /* i will handle this in next article */
+            val options = ActivityOptions.makeSceneTransitionAnimation(
+                    activity!!,
+                    imageView,
+                    "imageMain"
+            )
+
+            startActivity(Intent(context, PhotoViewActivity::class.java).apply {
+                putExtra("photo_url", photo.imageName)
+                putExtra("RESULT_EXTRA_SHOT_ID", photo.albumId)
+            }, options.toBundle())
+        }
         val spanSizeLookup = context?.resources?.getInteger(R.integer.span_size) ?: 2
         recycleView.layoutManager = StaggeredGridLayoutManager(spanSizeLookup, StaggeredGridLayoutManager.VERTICAL)
         (recycleView.layoutManager as? StaggeredGridLayoutManager)?.apply {

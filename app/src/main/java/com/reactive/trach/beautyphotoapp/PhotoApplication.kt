@@ -2,9 +2,9 @@ package com.reactive.trach.beautyphotoapp
 
 import android.content.Context
 import android.content.res.Configuration
-import android.support.multidex.MultiDexApplication
+import androidx.multidex.MultiDexApplication
 import com.squareup.leakcanary.LeakCanary
-import android.support.multidex.MultiDex
+import androidx.multidex.MultiDex
 import com.jakewharton.threetenabp.AndroidThreeTen
 
 class PhotoApplication: MultiDexApplication() {

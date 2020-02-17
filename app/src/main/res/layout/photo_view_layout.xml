@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.reactive.trach.beautyphotoapp.widgets.ElasticDragDismissFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/draggableFrame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:transitionGroup="false"
+    app:dragDismissDistance="310dp"
+    android:background="@null"
+    app:dragDismissScale="0.5">
+
+    <!-- Use a separate view for the background, rather than on the root view because it is a
+              shared element. Otherwise it interferes with the window enter transition i.e. as it is
+              resized for the shared element transition, many views are considered 'off-screen' so
+              visibility transitions are not run. -->
+    <View
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_page_bg" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/body_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:scrollbars="vertical"
+        android:scrollbarStyle="insideOverlay">
+
+        <ImageView
+            android:id="@+id/photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:transitionName="imageMain"
+            android:src="@drawable/img_default_meizi"/>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</com.reactive.trach.beautyphotoapp.widgets.ElasticDragDismissFrameLayout>
+

@@ -1,6 +1,6 @@
 package com.reactive.trach.beautyphotoapp
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.reactive.trach.beautyphotoapp.albums.AlbumDetailFragment
 import com.reactive.trach.beautyphotoapp.albums.AlbumDetailParams
 import com.reactive.trach.beautyphotoapp.main.MainFragment
